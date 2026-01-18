@@ -154,25 +154,21 @@ function selectSeat(seatNumber, seatElement) {
     if (isCorrect) {
         seatElement.classList.add('correct');
         elements.selectedSeatInfo.innerHTML = `
-            <div class="seat-selected-display" style="background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);">
-                ✓ 올바른 좌석: ${seatNumber}번
+            <div class="seat-selected-display">
+                선택한 좌석: ${seatNumber}번
             </div>
         `;
         elements.reserveBtn.disabled = false;
         elements.reserveBtn.querySelector('.btn-text').textContent = '예매하기';
-        elements.seatInstruction.textContent = '✓ 올바른 좌석을 선택했습니다!';
-        elements.seatInstruction.style.color = '#4caf50';
     } else {
         seatElement.classList.add('wrong');
         elements.selectedSeatInfo.innerHTML = `
-            <div class="seat-selected-display" style="background: linear-gradient(135deg, #ff5252 0%, #f44336 100%);">
-                ✗ 잘못된 좌석: ${seatNumber}번 (${gameState.targetSeat}번을 선택하세요!)
+            <div class="seat-selected-display">
+                선택한 좌석: ${seatNumber}번
             </div>
         `;
         elements.reserveBtn.disabled = true;
-        elements.reserveBtn.querySelector('.btn-text').textContent = `${gameState.targetSeat}번 좌석을 선택하세요`;
-        elements.seatInstruction.textContent = `✗ ${gameState.targetSeat}번 좌석을 찾아서 선택하세요!`;
-        elements.seatInstruction.style.color = '#ff5252';
+        elements.reserveBtn.querySelector('.btn-text').textContent = '좌석을 다시 선택하세요';
     }
 }
 
@@ -215,8 +211,6 @@ function showTicketingScreen() {
     elements.selectedSeatInfo.innerHTML = '<p class="no-selection">좌석을 선택해주세요</p>';
     elements.reserveBtn.disabled = true;
     elements.reserveBtn.querySelector('.btn-text').textContent = '좌석을 먼저 선택하세요';
-    elements.seatInstruction.textContent = '⚡ 지정된 좌석을 빠르게 찾아서 선택하세요!';
-    elements.seatInstruction.style.color = '#f5576c';
     
     // Setup reserve button click
     elements.reserveBtn.onclick = handleReserveClick;
