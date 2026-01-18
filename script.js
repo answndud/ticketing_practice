@@ -28,9 +28,7 @@ const elements = {
     reserveBtn: document.getElementById('reserveBtn'),
     retryBtn: document.getElementById('retryBtn'),
     seatsGrid: document.getElementById('seatsGrid'),
-    selectedSeatInfo: document.getElementById('selectedSeatInfo'),
     targetSeatNumber: document.getElementById('targetSeatNumber'),
-    seatInstruction: document.getElementById('seatInstruction'),
     resultReactionTime: document.getElementById('resultReactionTime'),
     resultQueuePosition: document.getElementById('resultQueuePosition'),
     resultSeatNumber: document.getElementById('resultSeatNumber'),
@@ -129,7 +127,6 @@ function selectSeat(seatNumber, seatElement) {
         gameState.selectedSeat = null;
         
         // Update UI
-        elements.selectedSeatInfo.innerHTML = '<p class="no-selection">좌석을 선택해주세요</p>';
         elements.reserveBtn.disabled = true;
         elements.reserveBtn.querySelector('.btn-text').textContent = '좌석을 먼저 선택하세요';
         return;
@@ -153,20 +150,10 @@ function selectSeat(seatNumber, seatElement) {
     
     if (isCorrect) {
         seatElement.classList.add('correct');
-        elements.selectedSeatInfo.innerHTML = `
-            <div class="seat-selected-display">
-                선택한 좌석: ${seatNumber}번
-            </div>
-        `;
         elements.reserveBtn.disabled = false;
         elements.reserveBtn.querySelector('.btn-text').textContent = '예매하기';
     } else {
         seatElement.classList.add('wrong');
-        elements.selectedSeatInfo.innerHTML = `
-            <div class="seat-selected-display">
-                선택한 좌석: ${seatNumber}번
-            </div>
-        `;
         elements.reserveBtn.disabled = true;
         elements.reserveBtn.querySelector('.btn-text').textContent = '좌석을 다시 선택하세요';
     }
@@ -208,7 +195,6 @@ function showTicketingScreen() {
     generateSeats();
     
     // Reset seat selection UI
-    elements.selectedSeatInfo.innerHTML = '<p class="no-selection">좌석을 선택해주세요</p>';
     elements.reserveBtn.disabled = true;
     elements.reserveBtn.querySelector('.btn-text').textContent = '좌석을 먼저 선택하세요';
     
