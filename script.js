@@ -510,5 +510,29 @@ window.addEventListener('resize', () => {
     }
 });
 
+// Share functions
+function shareOnTwitter() {
+    const text = '티켓팅 연습 사이트에서 빠른 클릭 속도를 훈련하세요! 🎫';
+    const url = window.location.href;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(twitterUrl, '_blank', 'width=550,height=420');
+}
+
+function copyLink() {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then(() => {
+        alert('링크가 복사되었습니다! 친구들에게 공유해보세요! 🎉');
+    }).catch(() => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('링크가 복사되었습니다! 친구들에게 공유해보세요! 🎉');
+    });
+}
+
 // Start the application
 init();
