@@ -712,3 +712,41 @@ footer p {
         transform: translateY(0);
     }
 }
+
+/* Minimal sharp visual system */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #ffffff;
+    --bg-card: #ffffff;
+    --bg-input: #ffffff;
+    --accent: #D2E0E5;
+    --accent-primary: #D2E0E5;
+    --accent-secondary: #D2E0E5;
+    --primary: #D2E0E5;
+    --primary-color: #D2E0E5;
+    --gradient-accent: none;
+}
+
+html, body {
+    background: #ffffff !important;
+}
+
+*, *::before, *::after {
+    border-radius: 0 !important;
+}
+
+button, .button, .btn, .action-btn, .primary,
+input[type="submit"], input[type="button"] {
+    background: #D2E0E5 !important;
+    background-image: none !important;
+    color: #101416 !important;
+    border-color: #D2E0E5 !important;
+    box-shadow: none !important;
+}
+
+button:hover, .button:hover, .btn:hover, .action-btn:hover,
+input[type="submit"]:hover, input[type="button"]:hover {
+    background: #D2E0E5 !important;
+    border-color: #101416 !important;
+}
